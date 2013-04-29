@@ -1,0 +1,28 @@
+<div class="gnd-table <% if(classname) { %> <%=classname%> <% } %>">
+  <table class="gnd-table-header">
+    <thead>
+      <tr>
+        <% _.each(columns, function(column){ %>
+        <th style="width:<%=column.width%>">
+          <span style="cursor:pointer;" <% if(column.sortable) { %> data-field="<%=column.field%>" data-event="click: table.sortHandler"<% } %>>
+            <span><%=column.header %></span>
+            <div <% if(column.sortable) { %> class="sortIcon" <% } %>></div>
+          </span>
+        </th>
+        <% }) %>
+      </tr>
+    </thead>
+  </table>
+  <% if(pretable) { %> <%=pretable%> <% } %>
+  <div class="gnd-table-contentwrapper" style="height:100%;overflow-y:auto;">
+    <table class="datatable-table">
+      <tbody>
+        <tr data-each="collection: item" class="gnd-table-row" data-event="click: table.selectHandler">
+          <% _.each(columns,function(column){ %>
+          <td data-bind="text: item.<%=column.field %>" style="width:<%=column.width%>"><%=column.content %></td>
+          <% }) %>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

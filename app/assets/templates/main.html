@@ -1,0 +1,32 @@
+<h1>Welcome to LiveF1.In</h1>
+
+<!--  Session selection -->
+<div id="sessions">
+  <lu>
+    <li data-each="sessions: session">
+      Session
+      <a data-bind="href: session.sesionId | sessionUrl; text: session.sessionId"></a>
+    </li>
+  </lu>
+</div>
+
+<!--  Session Details -->
+<div id="session-details">
+  
+  <!--  Weather information -->
+  <div id="weather">
+  </div>
+  
+  <!--  Session Leaderboard -->
+  <div id="leaderboard"></div>
+  
+  <!--  Global statistics, fastest car, speed, etc -->
+  <div id="statistics">
+  </div>
+  
+  <!--  Commentary -->
+  <div id="commentary">
+    
+  </div>
+  
+</div>
