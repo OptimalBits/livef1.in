@@ -59,9 +59,7 @@ livef1(config.LIVEF1_USER, config.LIVEF1_PASSWD, function(packet){
 function processPacket(packet){
   var Session = models.sessions;
   var Car = models.cars;
-  
-  //console.log(packet);
-  
+    
   if(packet.carId){
     // First upsert the car object using the pair carId, sessionId (we want unique carIds per sessionId)
     try{
