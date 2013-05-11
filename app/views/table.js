@@ -1,45 +1,48 @@
-define(['gnd', 'text!views/templates/table.html'], function(Gnd, tableTmpl){
+define(['gnd'], function(Gnd){
 'use strict';
 
 //
 // columns = [{header:'name', field:'field', sortable:true, width:20%}, ...]
+// TODO: save sort order in every column.
 // formatters
 // 
 return Gnd.Util.extend(Gnd.View, function(_super){
   return {
-    constructor: function(collection, options, formatters){
-      _super.constructor.call(this);
-      _.defaults(options,{
+    constructor: function(selector, collection, options){
+      _super.constructor.call(this, selector, null, {
+        templateUrl: 'views/templates/table.html',
+        templateEngine: _.template
+      });
+        
+      this.options = options = options || {};
+
+      this.collection = collection;
+      this.animateOnSelect = options.animateOnSelect;
+      this.selectedId = options.selectedId;
+      this.formatters = options.formatters || {};
+      
+      this.addedFn = Gnd.Util.noop;
+    },
+    render: function(){
+      var context = this.options; // TODO: clone
+      
+      _.defaults(context,{
         pretable: false,
         classname: false,
-        selectedId:null,
-        animateOnSelect:true
+        footer: false
       });
-
-      this.html = _.template(tableTmpl, options);
-      this.collection = collection;
-      this.formatters = formatters || {};
-      this.selectedId = options.selectedId;
-      this.animateOnSelect = options.animateOnSelect;
-    },
-    render: function(selector){
-      this.selector = selector;
-      _super.render.call(this);
-      this.viewModel = 
-        new Gnd.ViewModel(Gnd.$(selector)[0],
-                          {
-                            collection: this.collection,
-                            table: this
-                          },
-                          this.formatters);
-      /*
-      if(this.selectedId){
-        this.selectById(this.selectedId);
-      } else {
-        var item = this.collection.first();
-        this.selectById(item && item._id);
-      }
-      */
+      
+      var _this = this;
+      _super.render.call(this, context, function(){
+        _this.viewModel = 
+          new Gnd.ViewModel(_this.selector,
+                            {
+                              collection: _this.collection,
+                              table: _this
+                            },
+                            _this.formatters);
+      });
+      return this;
     },
     /*
     selectHandler: function(el){
