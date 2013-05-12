@@ -103,8 +103,10 @@ function raceLeaderBoard(){
   return {
     columns:[
       {header:'Pos', field: 'position', sortable: true, width: '2%'},
-      {header:'Driver', field: 'driver', sortable: true, width: '10%'},
+      {header:'Driver', field: 'driver', sortable: true, width: '4%'},
       {header:'Lap Time', field: 'lapTime', sortable: true, width: '5%'},
+      {header:'Gap', field: 'gap', sortable: true, width: '2%'},
+      {header:'Interval', field: 'interval', sortable: true, width: '2%'},
       {header:'Sector 1', field: 'sector1', sortable: true, width: '5%'},
       {header:'Sector 2', field: 'sector2', sortable: true, width: '5%'},
       {header:'Sector 3', field: 'sector3', sortable: true, width: '5%'},
@@ -130,14 +132,14 @@ function practiceLeaderBoard(){
 function qualifyingLeaderBoard(session){
   return {
     columns:[
-      {header:'Pos', field: 'position', sortable: true, width: '10%'},
-      {header:'Driver', field: 'driver', sortable: true, width: '40%'},
-      {header:'Period 1', field: 'period1', sortable: true, width: '18%'},
-      {header:'Period 2', field: 'period2', sortable: true, width: '18%'},
-      {header:'Period 3', field: 'period3', sortable: true, width: '18%'},
-      {header:'Sector 1', field: 'sector1', sortable: true, width: '5%'},
-      {header:'Sector 2', field: 'sector2', sortable: true, width: '5%'},
-      {header:'Sector 3', field: 'sector3', sortable: true, width: '5%'},
+      {header:'Pos', field: 'position', sortable: true, width: '5%'},
+      {header:'Driver', field: 'driver', sortable: true, width: '18%'},
+      {header:'Period 1', field: 'period1', sortable: true, width: '11%'},
+      {header:'Period 2', field: 'period2', sortable: true, width: '11%'},
+      {header:'Period 3', field: 'period3', sortable: true, width: '11%'},
+      {header:'Sector 1', field: 'sector1', sortable: true, width: '10%'},
+      {header:'Sector 2', field: 'sector2', sortable: true, width: '10%'},
+      {header:'Sector 3', field: 'sector3', sortable: true, width: '10%'},
       {header:'Laps', field: 'lapCount', sortable: true, width: '5%'},
     ],
       //selectedId : 0
