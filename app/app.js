@@ -90,6 +90,9 @@ function createLeaderBoard(selector, session, cars){
   }
   
   cars.set('sortByFn', function(car){
+    if (car.position === 0) {
+      return 100;
+    }
     return car.position;
   })
   
