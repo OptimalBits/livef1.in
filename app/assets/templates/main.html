@@ -2,12 +2,12 @@
 
 <!--  Session selection -->
 <div id="sessions">
-  <lu>
+  <ul class="inline">
     <li data-each="sessions: session">
       Session
       <a data-bind="href: session.sesionId | sessionUrl; text: session.sessionId"></a>
     </li>
-  </lu>
+  </ul>
 </div>
 
 <!--  Session Details -->
@@ -15,6 +15,7 @@
   
   <!--  Weather information -->
   <div id="weather">
+    <p>Weather information</p>
   </div>
   
   <!--  Session Leaderboard -->
@@ -22,11 +23,12 @@
   
   <!--  Global statistics, fastest car, speed, etc -->
   <div id="statistics">
+    <p>Fastest car, fastest speed, etc</p>
   </div>
   
   <!--  Commentary -->
   <div id="commentary">
-    
+    <p> Comments here...</p>
   </div>
   
 </div>
