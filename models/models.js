@@ -30,6 +30,8 @@ module.exports.comments = mongoose.model('Comment', new Schema(Comment));
 var Car = {
   carId: {type: String, index: true},
   driver: String,
+  interval: String,
+  gap: String,
   position: Number,
   period1: String,
   period2: String,
