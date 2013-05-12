@@ -1,5 +1,5 @@
 <div class="gnd-table <% if(classname) { %> <%=classname%> <% } %>">
-  <table class="gnd-table-header">
+  <table class="gnd-table-header table table-bordered table-condensed">
     <thead>
       <tr>
         <% _.each(columns, function(column){ %>
@@ -15,7 +15,7 @@
   </table>
   <% if(pretable) { %> <%=pretable%> <% } %>
   <div class="gnd-table-contentwrapper" style="height:100%;overflow-y:auto;">
-    <table class="datatable-table">
+    <table class="datatable-table table table-bordered table-condensed table-striped">
       <tbody>
         <tr data-each="collection: item" class="gnd-table-row" data-event="click: table.selectHandler">
           <% _.each(columns,function(column){ %>
