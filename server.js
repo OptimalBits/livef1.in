@@ -63,13 +63,24 @@ function processPacket(packet){
   if(packet.carId){
     // First upsert the car object using the pair carId, sessionId (we want unique carIds per sessionId)
     try{
-      Car.findOneAndUpdate({carId: packet.carId, sessionId: packet.sessionId}, packet, {upsert: true}, function(err, car){
+      // Ignore some properties with zero data
+      var ignoreZero = ['sector1', 'sector2', 'sector3', 'driver', 'lapTime'];
+      for(var i=0; i<ignoreZero.length; i++){
+        if(packet[ignoreZero[i]] === '0'){
+          delete packet[ignoreZero[i]]
+        }
+      }
+      
+      Car.findOneAndUpdate({carId: packet.carId, 
+                            sessionId: packet.sessionId},
+                            packet,
+                            {upsert: true}, function(err, car){
         if(!err){
           // Check if car is not in session, then add it.
           Session.update({sessionId: packet.sessionId}, {$addToSet: {cars:{$each:[car._id]}}}, function(err, session){
             // How do we know if a car was added, or not?
           });
-      
+          
           syncHub.update(null, ['cars', car._id], packet);
         }
       });
