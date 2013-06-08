@@ -3,6 +3,7 @@ function(Gnd, Session, Car, Table){
 'use strict';
 
 Gnd.use.historyApi(false);
+Gnd.debug = true;
 
 //
 // Establish a socket.io connection.
