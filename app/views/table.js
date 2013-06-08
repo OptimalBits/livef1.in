@@ -9,11 +9,12 @@ define(['gnd'], function(Gnd){
 return Gnd.Util.extend(Gnd.View, function(_super){
   return {
     constructor: function(selector, collection, options){
-      _super.constructor.call(this, selector, null, {
+      _super.constructor.call(this, {
         templateUrl: 'views/templates/table.html',
         templateEngine: _.template
       });
         
+      this.parent(selector);
       this.options = options = options || {};
 
       this.collection = collection;
@@ -33,7 +34,7 @@ return Gnd.Util.extend(Gnd.View, function(_super){
       });
       
       var _this = this;
-      _super.render.call(this, context, function(){
+      _super.render.call(this, context).then(function(){
         _this.viewModel = 
           new Gnd.ViewModel(_this.selector,
                             {
