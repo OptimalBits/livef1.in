@@ -59,7 +59,6 @@ Gnd.Route.listen(function(req) {
     });
     
     req.get(':id', '#session-details', function(pool){
-      
       req.after(function(done){
         // Load Session
         Session.findById(req.params.id).then(function(session){          
@@ -72,7 +71,7 @@ Gnd.Route.listen(function(req) {
                                               session.all(Car));
           leaderBoard.render();
 
-          pool.autorelease(sessionVM, leaderBoard);
+          pool.autorelease(sessionVM, leaderBoard, session);
           done();
         });
       });
