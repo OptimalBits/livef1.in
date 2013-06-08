@@ -50,7 +50,7 @@ Gnd.Route.listen(function(req) {
           new Gnd.ViewModel('#sessions',
             {sessions: sessions}, 
             {sessionUrl: function(){
-              return 'sessions/'+this._id;
+              return '#!sessions/'+this._id;
             }});
         
         done();
